@@ -16,6 +16,19 @@
 
 @implementation WLTabBarController
 
+-(void)viewDidLayoutSubviews{
+    if (self.tabBar.subviews) {
+        for (UIView *view in [self.tabBar subviews]) {
+            if ([view isKindOfClass:[UIControl class]]) {
+                [view removeFromSuperview];
+            }
+            if ([view isKindOfClass:[UIImageView class]]) {
+                [view removeFromSuperview];
+            }
+        }
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -97,7 +110,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)layoutSublayersOfLayer:(CALayer *)layer{
+    
+}
 
 /*
 #pragma mark - Navigation

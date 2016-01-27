@@ -1,39 +1,38 @@
 //
-//  ViewControllerThree.m
+//  ViewControllerFour.m
 //  自定义tabBarController
 //
-//  Created by lihongfeng on 16/1/6.
+//  Created by lihongfeng on 16/1/27.
 //  Copyright © 2016年 wanglei. All rights reserved.
 //
 
-#import "ViewControllerThree.h"
 #import "ViewControllerFour.h"
 
-@interface ViewControllerThree ()
+#define RandomColor [UIColor colorWithRed:(arc4random()%255)/255.0 green:(arc4random()%255)/255.0 blue:(arc4random()%255)/255.0 alpha:1]
+
+@interface ViewControllerFour ()
 
 @end
 
-@implementation ViewControllerThree
+@implementation ViewControllerFour
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.view.backgroundColor = RandomColor;
     
-    //push
     UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    pushBtn.bounds = CGRectMake(0, 0, 130, 40);
+    pushBtn.bounds = CGRectMake(0, 0, 160, 40);
     pushBtn.center = CGPointMake(self.view.bounds.size.width/2, 200);
-    [pushBtn setTitle:@"push" forState:UIControlStateNormal];
-    [pushBtn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
+    [pushBtn setTitle:@"push to root" forState:UIControlStateNormal];
+    [pushBtn addTarget:self action:@selector(pushToRoot) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pushBtn];
     
 }
 
--(void)push{
-    ViewControllerFour *vc = [[ViewControllerFour alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+-(void)pushToRoot{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

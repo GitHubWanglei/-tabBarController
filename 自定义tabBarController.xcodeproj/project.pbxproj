@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6151E52A1C58C091004C89B8 /* ViewControllerFour.m in Sources */ = {isa = PBXBuildFile; fileRef = 6151E5291C58C091004C89B8 /* ViewControllerFour.m */; };
 		61F986B31C3CEFF2006966F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F986B21C3CEFF2006966F9 /* main.m */; };
 		61F986B61C3CEFF2006966F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F986B51C3CEFF2006966F9 /* AppDelegate.m */; };
 		61F986BC1C3CEFF2006966F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F986BA1C3CEFF2006966F9 /* Main.storyboard */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6151E5281C58C091004C89B8 /* ViewControllerFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerFour.h; sourceTree = "<group>"; };
+		6151E5291C58C091004C89B8 /* ViewControllerFour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerFour.m; sourceTree = "<group>"; };
 		61F986AE1C3CEFF2006966F9 /* 自定义tabBarController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "自定义tabBarController.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F986B21C3CEFF2006966F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		61F986B41C3CEFF2006966F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				61F986D71C3CF387006966F9 /* ViewControllerTwo.m */,
 				61F986D91C3CF393006966F9 /* ViewControllerThree.h */,
 				61F986DA1C3CF393006966F9 /* ViewControllerThree.m */,
+				6151E5281C58C091004C89B8 /* ViewControllerFour.h */,
+				6151E5291C58C091004C89B8 /* ViewControllerFour.m */,
 				61F986DC1C3CF3FD006966F9 /* tabbar_home_os7@2x.png */,
 				61F986DE1C3CF405006966F9 /* tabbar_message_center_os7@2x.png */,
 				61F986E01C3CF413006966F9 /* tabbar_home_selected_os7@2x.png */,
@@ -211,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6151E52A1C58C091004C89B8 /* ViewControllerFour.m in Sources */,
 				61F986DB1C3CF393006966F9 /* ViewControllerThree.m in Sources */,
 				61F986D51C3CF37A006966F9 /* ViewControllerOne.m in Sources */,
 				61F986D11C3CF35B006966F9 /* WLTabBarButton.m in Sources */,
