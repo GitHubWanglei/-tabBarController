@@ -10,6 +10,7 @@
 #import "ViewControllerOne.h"
 #import "ViewControllerTwo.h"
 #import "WLTabBarController.h"
+#import "TestTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -24,12 +25,13 @@
     WLTabBarController *tabBarVC = [[WLTabBarController alloc] init];
     //添加子控制器
     ViewControllerOne *vc1 = [[ViewControllerOne alloc] init];
+    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:vc1];
     ViewControllerTwo *vc2 = [[ViewControllerTwo alloc] init];
-    [tabBarVC addViewControllersWithVC:vc1 Title:@"主页" imageName:@"tabbar_home_os7" selectedImageName:@"tabbar_home_selected_os7"];
-    [tabBarVC addViewControllersWithVC:vc2 Title:@"消息" imageName:@"tabbar_message_center_os7" selectedImageName:@"tabbar_message_center_selected_os7"];
+    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:vc2];
+    [tabBarVC addChildViewController:nav1 Title:@"主页" imageName:@"tabbar_home_os7" selectedImageName:@"tabbar_home_selected_os7"];
+    [tabBarVC addChildViewController:nav2 Title:@"消息" imageName:@"tabbar_message_center_os7" selectedImageName:@"tabbar_message_center_selected_os7"];
     
     self.window.rootViewController = tabBarVC;
-    
     return YES;
 }
 

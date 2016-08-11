@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		613FA3521D5C4A0F00C52E21 /* TestTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 613FA3511D5C4A0F00C52E21 /* TestTabBarController.m */; };
 		6151E52A1C58C091004C89B8 /* ViewControllerFour.m in Sources */ = {isa = PBXBuildFile; fileRef = 6151E5291C58C091004C89B8 /* ViewControllerFour.m */; };
 		61F986B31C3CEFF2006966F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F986B21C3CEFF2006966F9 /* main.m */; };
 		61F986B61C3CEFF2006966F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F986B51C3CEFF2006966F9 /* AppDelegate.m */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		613FA3501D5C4A0F00C52E21 /* TestTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTabBarController.h; sourceTree = "<group>"; };
+		613FA3511D5C4A0F00C52E21 /* TestTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTabBarController.m; sourceTree = "<group>"; };
 		6151E5281C58C091004C89B8 /* ViewControllerFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerFour.h; sourceTree = "<group>"; };
 		6151E5291C58C091004C89B8 /* ViewControllerFour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerFour.m; sourceTree = "<group>"; };
 		61F986AE1C3CEFF2006966F9 /* 自定义tabBarController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "自定义tabBarController.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +110,8 @@
 				61F986E41C3CF80F006966F9 /* btn_backImage.png */,
 				61F986E61C3CFAF0006966F9 /* circle.png */,
 				61F986E81C3D06B6006966F9 /* add.png */,
+				613FA3501D5C4A0F00C52E21 /* TestTabBarController.h */,
+				613FA3511D5C4A0F00C52E21 /* TestTabBarController.m */,
 				61F986C91C3CF35B006966F9 /* WLTabBarController */,
 				61F986BA1C3CEFF2006966F9 /* Main.storyboard */,
 				61F986BD1C3CEFF2006966F9 /* Assets.xcassets */,
@@ -221,6 +226,7 @@
 				61F986D51C3CF37A006966F9 /* ViewControllerOne.m in Sources */,
 				61F986D11C3CF35B006966F9 /* WLTabBarButton.m in Sources */,
 				61F986D01C3CF35B006966F9 /* WLTabBar.m in Sources */,
+				613FA3521D5C4A0F00C52E21 /* TestTabBarController.m in Sources */,
 				61F986B61C3CEFF2006966F9 /* AppDelegate.m in Sources */,
 				61F986D21C3CF35B006966F9 /* WLTabBarController.m in Sources */,
 				61F986B31C3CEFF2006966F9 /* main.m in Sources */,

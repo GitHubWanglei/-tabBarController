@@ -54,15 +54,13 @@
 }
 
 -(void)setBadgeValue:(NSString *)badgeValue{
-    
+    [self.badgeBtn removeFromSuperview];
     _badgeValue = badgeValue;
     if (_badgeValue.length == 1) {
-        [self.badgeBtn removeFromSuperview];
         NSString *text = _badgeValue;
         CGRect badge_frame = CGRectMake(self.bounds.size.width/2.0+10, 3, 15, 15);
         [self addBadgeWithFrame:badge_frame text:text];
     }else if(_badgeValue.length == 2){
-        [self.badgeBtn removeFromSuperview];
         NSString *text = _badgeValue;
         CGRect badge_frame = CGRectMake(self.bounds.size.width/2.0+10, 3, 20, 15);
         [self addBadgeWithFrame:badge_frame text:text];
@@ -74,7 +72,6 @@
     }else {
         [self.badgeBtn removeFromSuperview];
     }
-
 }
 
 -(void)addBadgeWithFrame:(CGRect)frame text:(NSString *)text{

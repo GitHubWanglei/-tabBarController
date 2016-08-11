@@ -21,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RandomColor;
+    self.title = @"jfoajg";
     
     //push
     UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeCustom];

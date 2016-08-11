@@ -7,6 +7,7 @@
 //
 
 #import "ViewControllerTwo.h"
+#import "ViewControllerThree.h"
 
 #define RandomColor [UIColor colorWithRed:(arc4random()%255)/255.0 green:(arc4random()%255)/255.0 blue:(arc4random()%255)/255.0 alpha:1]
 
@@ -32,6 +33,20 @@
     [self.view addSubview:btn];
     
     self.tabBarItem.badgeValue = @"1";
+    //push
+    UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    pushBtn.bounds = CGRectMake(0, 0, 130, 40);
+    pushBtn.center = CGPointMake(self.view.bounds.size.width/2, 280);
+    [pushBtn setTitle:@"push" forState:UIControlStateNormal];
+    [pushBtn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pushBtn];
+    
+}
+
+-(void)push{
+    ViewControllerThree *vc = [[ViewControllerThree alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)refreshBadgeValue{

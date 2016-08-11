@@ -9,14 +9,15 @@
 #import "WLTabBar.h"
 
 @interface WLTabBarController ()<WLTabBarDelegate>
-
 @property (nonatomic, strong) WLTabBar *customerTabBar;
-
 @end
 
 @implementation WLTabBarController
 
+#pragma mark - lifecycle
 -(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    //remove subviews form system tabBar
     if (self.tabBar.subviews) {
         for (UIView *view in [self.tabBar subviews]) {
             if ([view isKindOfClass:[UIControl class]]) {
@@ -31,45 +32,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //将自定义 tabBar 放入系统 tabBar 中
-    WLTabBar *myTabBar = [[WLTabBar alloc] init];
-    myTabBar.frame = self.tabBar.bounds;
-    myTabBar.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.9];
-    self.customerTabBar = myTabBar;
-    self.customerTabBar.delegate = self;
     self.tabBar.clipsToBounds = NO;
     [self.tabBar addSubview:self.customerTabBar];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.selectedIndex = 0;//默认选中第一个VC
-//    NSLog(@"before subViews: %@", [self.tabBar subviews]);
-    //移除系统 tabBar 里面的 View
-    for (UIView *view in [self.tabBar subviews]) {
-        if ([view isKindOfClass:[UIControl class]]) {
-            [view removeFromSuperview];
-        }
-        if ([view isKindOfClass:[UIImageView class]]) {
-            [view removeFromSuperview];
-        }
-    }
-//    NSLog(@"after subViews: %@", [self.tabBar subviews]);
+    self.selectedIndex = 0;
 }
 
--(void)addViewControllersWithVC:(UIViewController *)vc Title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName{
-    [self addViewController:vc Title:title imageName:imageName selectedImageName:selectedImageName];
-}
-
--(void)addViewController:(UIViewController *)viewController Title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName{
+#pragma mark - addChildViewController
+-(void)addChildViewController:(UIViewController *)viewController
+                        Title:(NSString *)title
+                    imageName:(NSString *)imageName
+            selectedImageName:(NSString *)selectedImageName{
     viewController.title = title;
     viewController.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     viewController.tabBarItem.selectedImage = [UIImage imageNamed:selectedImageName];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [self addChildViewController:nav];
-    
+    [self addChildViewController:viewController];
     [self.customerTabBar addButtonWithItem:viewController.tabBarItem];
 }
 
@@ -105,23 +85,19 @@
     }];
 }
 
+- (WLTabBar *)customerTabBar{
+    if (!_customerTabBar) {
+        _customerTabBar = [[WLTabBar alloc] init];
+        _customerTabBar.frame = self.tabBar.bounds;
+        _customerTabBar.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+        self.customerTabBar.delegate = self;
+    }
+    return _customerTabBar;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
--(void)layoutSublayersOfLayer:(CALayer *)layer{
-    
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

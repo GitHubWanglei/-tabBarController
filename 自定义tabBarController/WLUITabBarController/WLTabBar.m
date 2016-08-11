@@ -17,10 +17,9 @@
 
 @implementation WLTabBar
 
--(NSMutableArray *)tabBarButtons{
+- (NSMutableArray *)tabBarButtons{
     if (_tabBarButtons == nil) {
-        NSMutableArray *arr = [NSMutableArray array];
-        _tabBarButtons = arr;
+        _tabBarButtons = [NSMutableArray array];
     }
     return _tabBarButtons;
 }
@@ -41,43 +40,61 @@
 }
 
 -(void)btnClick:(WLTabBarButton *)btn{
-    
     if (btn.tag == 10000) {
-        
         if ([self.delegate respondsToSelector:@selector(clickAddButton)]) {
             [self.delegate clickAddButton];
         }
-        
     }else{
         if ([self.delegate respondsToSelector:@selector(changViewControllerFrom:to:)]) {
             [self.delegate changViewControllerFrom:self.lastSelectedBtn.tag to:btn.tag];
         }
-        
         self.lastSelectedBtn.selected = NO;
         btn.selected = YES;
         self.lastSelectedBtn = btn;
     }
-    
 }
 
 -(void)layoutSubviews{
-    
+    [super layoutSubviews];
+//    [self layoutSubviewsWithAverageBounds];
+    [self layoutSubviewsWithSpecialButton];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"badgeValue"]) {
+        UITabBarItem *item = object;
+        for (int i = 0; i < self.tabBarButtons.count; i++) {
+            if (item.tag == i) {
+                WLTabBarButton *btn = self.tabBarButtons[i];
+                btn.badgeValue = item.badgeValue;
+                break;
+            }
+        }
+    }
+}
+
+//平分布局
+- (void)layoutSubviewsWithAverageBounds{
     CGFloat btnW = self.bounds.size.width/self.tabBarButtons.count;
     CGFloat btnH = self.bounds.size.height;
     CGFloat btnY = 0;
-    
-    //平分布局, 不加中间按钮
-//    for (int index = 0; index < self.tabBarButtons.count; index++) {
-//        WLTabBarButton *btn = (WLTabBarButton *)self.tabBarButtons[index];
-//        btn.frame = CGRectMake(btnW * index, btnY, btnW, btnH);
-//        btn.tag = index;
-//        btn.badgeValue = btn.tabBarItem.badgeValue;
-//        btn.selected = NO;
-//        if (index==0) {
-//            btn.selected = YES;//默认选中第一个按钮
-//            self.lastSelectedBtn = btn;
-//        }
-//    }
+    for (int index = 0; index < self.tabBarButtons.count; index++) {
+        WLTabBarButton *btn = (WLTabBarButton *)self.tabBarButtons[index];
+        btn.frame = CGRectMake(btnW * index, btnY, btnW, btnH);
+        btn.tag = index;
+        btn.badgeValue = btn.tabBarItem.badgeValue;
+        btn.selected = NO;
+        if (index == 0) {
+            btn.selected = YES;//默认选中第一个按钮
+            self.lastSelectedBtn = btn;
+        }
+    }
+}
+
+- (void)layoutSubviewsWithSpecialButton{
+    CGFloat btnW = self.bounds.size.width/self.tabBarButtons.count;
+    CGFloat btnH = self.bounds.size.height;
+    CGFloat btnY = 0;
     
     //中间加按钮
     btnW = (self.bounds.size.width-72)/self.tabBarButtons.count;
@@ -103,19 +120,15 @@
     btn.tag = 10000;
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
-    
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    if ([keyPath isEqualToString:@"badgeValue"]) {
-        UITabBarItem *item = object;
-        for (int i = 0; i < self.tabBarButtons.count; i++) {
-            if (item.tag == i) {
-                WLTabBarButton *btn = self.tabBarButtons[i];
-                btn.badgeValue = item.badgeValue;
-            }
-        }
-    }
 }
 
 @end
+
+
+
+
+
+
+
+
+
